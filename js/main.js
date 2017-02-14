@@ -88,7 +88,7 @@ function play(tokens, bet) {
         }
 
         //end of round stuff
-        if (total < 26) {
+        if (total < 25) {
             payout = bet;
             winnings -= payout;
             lossCount++;
@@ -96,19 +96,19 @@ function play(tokens, bet) {
             if(total === 3 && playCount <= 100)
                 feelsBadMan(total);
         }
-        else if (total >= 26 && total < 40) {
+        else if (total >= 25 && total < 30) {
             payout = bet;
             winnings += payout;
             winCount++;
         }
-        else if (total >= 40 && total < 100) {
-            payout = bet * (Math.floor(total / 10) - 1);
+        else if (total >= 30 && total < 100) {
+            payout = bet * (Math.floor(total / 10) - 2);
             winnings += payout;
             winCount++;
         }
         else if (total >= 100) {
             console.log('M-m-m-monster kill!!');
-            payout = bet * (Math.floor(total / 10) * roundCount);
+            payout = bet * (Math.floor(total / 10) + roundCount);
             winnings += payout;
             winCount++;
         }
