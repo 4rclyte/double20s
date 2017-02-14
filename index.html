@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body class="bg">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div align="center">
+            <h3 class="title">Jackpot or Gans? Fortunorgans? Name in progress...</h3>
+            <p>This dice game is played with two d20s. The standard ante is 10g per play.</p>
+            <p>Roll your dice and add the result. If you get under a 26 you lose your ante.</p>
+            <p>However if you happen to get an identical pair or match the ones digit, you keep rolling!</p>
+            <p>On an identical match (4 and 4, etc) you add an additional 10 to your score.</p>
+            <p>Over 10 million simulated games the house is favored to win 1.1% of the money at stake.</p>
+            <p>The legend below tells you the payout depending on your final result! Good luck!</p>
+        </div>
+
+        <div align="center">
+            <table class="legend">
+                <tr style="border-bottom: 1px groove black">
+                    <th>Score</th>
+                    <th style="border-left: 1px groove black">Payout</th>
+                </tr>
+                <tr>
+                    <td style="background-color: darkred; color: orangered">3</td>
+                    <td style="border-left: 1px groove black" class="badStuff" onclick="feelsBadMan('qq')">EPIC FAIL</td>
+                </tr>
+                <!--<tr>
+                    <td style="background-color: darkred">4-9</td>
+                    <td>Lose your bet, involuntary organ donation</td>
+                </tr>-->
+                <tr>
+                    <td style="background-color: red">4-25</td>
+                    <td style="border-left: 1px groove black">Lose your bet</td>
+                </tr>
+                <tr>
+                    <td style="background-color: cyan">26-39</td>
+                    <td style="border-left: 1px groove black">Win bet amount</td>
+                </tr>
+                <tr>
+                    <td style="background-color: darkorchid">40-99</td>
+                    <td style="border-left: 1px groove black">Win bet * ((rollTotal / 10) - 1)</td>
+                </tr>
+                <tr>
+                    <td style="background-color: gold">100+</td>
+                    <td style="border-left: 1px groove black">Win bet * ((rollTotal / 9) * timesrolled)</td>
+                </tr>
+            <table>
+        </div>
+
+        <!--
+        <p>3: (-bet, --self) You're in for a surprise! Two for one special! Come around back and we'll hook you up!</p>
+        <p>4-9: (-bet, -self) You've had a bad day I bet. Come back to the executive lounge and take a load off.</p>
+        -->
+        
+        <p>Below you can simulate the results of playing the game.</p>
+        <hr>
+
+        <div id="feelsBadMan" class="badStuff hidden"></div>
+        
+        <div>
+            <label for="bet">I'll bet... </label>
+            <input id="bet" type="number" min="1" max="1000" value="10" required />
+            <span>gold</span>
+            <input id="count" type="number" min="1" max="1000000" step="1" value="1" required />
+            <label for="count">times! </label>
+        </div>
+        <br>
+        <div>
+            <button id="play" onclick="play()"><strong>Let 'er rip!</strong></button>
+        </div>
+        <br>
+        <div align="center">
+            <table class="results">
+                <tr>
+                    <td>Games Played</td>
+                    <td id="gamesRan">0</td>
+                </tr>
+                <tr>
+                    <td>Max Payout</td>
+                    <td id="jackpot">0</td>
+                </tr>
+                <tr>
+                    <td>High Score</td>
+                    <td id="highScore">0</td>
+                </tr>
+                <tr>
+                    <td>Avg Score</td>
+                    <td id="avgScore">0</td>
+                </tr>
+                <tr>
+                    <td>Avg Payout</td>
+                    <td id="avgPayout">0</td>
+                </tr>
+                <tr>
+                    <td>Win Rate</td>
+                    <td id="winRate">0%</td>
+                </tr>
+                <tr>
+                    <td>Winnings</td>
+                    <td id="winnings">0</td>
+                </tr>
+            </table>
+
+            <p id="bestRound"></p>
+        </div>
+        <br>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>
