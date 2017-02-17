@@ -1,0 +1,153 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Double 20s Dice Game?</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body class="bg">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div align="center">
+            <h3 class="title">Double 20s</h3>
+            <p>This dice game is played with two d20s. Roll your dice and add the result.</p>
+            <p>If you get under a 25 you lose your ante. On a 25 or higher you win!</p>
+            <p>If you happen to get an identical pair or match the ones digit(ex 2 & 12), you keep rolling!</p>
+            <p>On an identical match(4 & 4, etc) you add an additional 10 to your score.</p>
+            <p>Over 100 million simulated games the house is favored to win about 2.8% of the money at stake.</p>
+            <p>The legend below tells you the payout depending on your final result! Good luck!</p>
+        </div>
+
+        <div align="center">
+            <table class="legend">
+                <tr style="border-bottom: 1px groove black">
+                    <th>Score</th>
+                    <th style="border-left: 1px groove black">Payout</th>
+                </tr>
+                <tr>
+                    <td style="background-color: darkred; color: #9b6f00">3</td>
+                    <td style="border-left: 1px groove black" class="badStuff" onclick="feelsBadMan('qq')">EPIC FAIL</td>
+                </tr>
+                <tr>
+                    <td style="background-color: darkred">4-24</td>
+                    <td style="border-left: 1px groove black">Lose your bet</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #a17419">25-39</td>
+                    <td style="border-left: 1px groove black">1x bet</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #b7b7b7">40-49</td>
+                    <td style="border-left: 1px groove black">2x bet</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #b7b7b7">50-59</td>
+                    <td style="border-left: 1px groove black">3x bet</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #b7b7b7">60-69</td>
+                    <td style="border-left: 1px groove black">4x bet</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #d5a500">70-79</td>
+                    <td style="border-left: 1px groove black">5x bet</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #d5a500">80-89</td>
+                    <td style="border-left: 1px groove black">6x bet</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #d5a500">90-99</td>
+                    <td style="border-left: 1px groove black">7x bet</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #e5e4e2">100+</td>
+                    <td style="border-left: 1px groove black">Bet x ((Score / 10) + timesrolled)</td>
+                </tr>
+            <table>
+        </div>
+        
+        <p>Below you can simulate the results of playing the game.</p>
+        <hr>
+
+        <div id="feelsBadMan" class="badStuff hidden"></div>
+
+        <label for="gamesPlayed">Total Played: </label><span id="gamesPlayed">0</span> 
+        <label for="totalWinnings"> Total Winnings: </label><span id="totalWinnings">0</span>
+        <br><br>
+   
+        <div>
+            <label for="bet">I'll bet... </label>
+            <input id="bet" type="number" min="1" max="1000" value="10" required />
+            <span>gold</span>
+            <input id="count" type="number" min="1" max="1000000" step="1" value="1" required />
+            <label for="count">times! </label>
+        </div>
+        <br>
+        <div>
+            <button id="play" onclick="play()"><strong>Let 'er rip!</strong></button>
+        </div>
+        <br>
+        <div align="center">
+            <table class="results">
+                <tr>
+                    <td>Games Played</td>
+                    <td id="gamesRan">0</td>
+                </tr>
+                <tr>
+                    <td>Max Payout</td>
+                    <td id="jackpot">0</td>
+                </tr>
+                <tr>
+                    <td>High Score</td>
+                    <td id="highScore">0</td>
+                </tr>
+                <tr>
+                    <td>Avg Score</td>
+                    <td id="avgScore">0</td>
+                </tr>
+                <tr>
+                    <td>Avg Payout</td>
+                    <td id="avgPayout">0</td>
+                </tr>
+                <tr>
+                    <td>Win Rate</td>
+                    <td id="winRate">0%</td>
+                </tr>
+                <tr>
+                    <td>Winnings</td>
+                    <td id="winnings">0</td>
+                </tr>
+            </table>
+               
+            <p id="bestRound"></p>
+        </div>
+        <br>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!--<script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>-->
+    </body>
+</html>
