@@ -122,7 +122,7 @@ function play(tokens, bet) {
             winCount++;
         }
         else if (total === 69) {
-            payout = bet * 69;
+            payout = bet * 6.9;
             winnings += payout;
             winCount++;
             
