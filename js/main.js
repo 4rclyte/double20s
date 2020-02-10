@@ -126,7 +126,7 @@ function play(tokens, bet) {
             winnings += payout;
             winCount++;
             
-            tempAlert("You scored 69. Nice.", 1500);  
+            if (tokens <= 100) { tempAlert("You scored 69. Nice.", 1500); }
         }
         else if (total >= 100) {
             if (tokens <= 100) { console.log('Total: ' + total + '. M-m-m-monster kill!!'); }
