@@ -237,7 +237,7 @@ function feelsBadMan(n) {
 function tempAlert(msg, duration)
 {
      var el = document.createElement("div");
-     el.setAttribute("class","centered");
+     el.setAttribute("class","center");
      el.innerHTML = msg;
      setTimeout(function(){
       el.parentNode.removeChild(el);
