@@ -94,10 +94,11 @@ function play(tokens, bet) {
             }
             roundCount++;
 
-            if(roundCount === 1)
+            if(roundCount === 1) {
                 recount += d1 + " and " + d2 + " for " + total + ". ";
-            else {
-                recount += "\n" + "Then " + d1 + " and " + d2 + " for " + total + ". ";
+            } else {
+                if(total === 69) { recount += "\n" + "Then " + d1 + " and " + d2 + " for " + total + ". Nice. "; }
+                else { recount += "\n" + "Then " + d1 + " and " + d2 + " for " + total + ". "; }
             }
         }
 
@@ -119,6 +120,10 @@ function play(tokens, bet) {
             payout = bet * (Math.floor(total / 10) - 2);
             winnings += payout;
             winCount++;
+            
+            if (total === 69) {
+                tempAlert("You scored 69. Nice.", 1500);  
+            }
         }
         else if (total >= 100) {
             console.log('M-m-m-monster kill!!');
@@ -227,4 +232,15 @@ function feelsBadMan(n) {
     $('.badStuff').removeClass('hidden');
 
     console.log(happening);
+}
+
+function tempAlert(msg, duration)
+{
+     var el = document.createElement("div");
+     el.setAttribute("style","position:absolute;top:40%;left:20%;background-color:white;border:1px solid black;padding:10px 15px;border-radius:10px;");
+     el.innerHTML = msg;
+     setTimeout(function(){
+      el.parentNode.removeChild(el);
+     },duration);
+     document.body.appendChild(el);
 }
