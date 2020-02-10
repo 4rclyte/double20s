@@ -237,7 +237,7 @@ function feelsBadMan(n) {
 function tempAlert(msg, duration)
 {
      var el = document.createElement("div");
-     el.setAttribute("style","position:absolute;top:40%;left:20%;background-color:white;border:1px solid black;padding:10px 15px;border-radius:10px;");
+     el.setAttribute("class","center");
      el.innerHTML = msg;
      setTimeout(function(){
       el.parentNode.removeChild(el);
