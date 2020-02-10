@@ -116,14 +116,17 @@ function play(tokens, bet) {
             winnings += payout;
             winCount++;
         }
-        else if (total >= 30 && total < 100) {
+        else if (total >= 30 && total < 100 && total !== 69) {
             payout = bet * (Math.floor(total / 10) - 2);
             winnings += payout;
             winCount++;
+        }
+        else if (total === 69) {
+            payout = bet * 69;
+            winnings += payout;
+            winCount++;
             
-            if (total === 69) {
-                tempAlert("You scored 69. Nice.", 1500);  
-            }
+            tempAlert("You scored 69. Nice.", 1500);  
         }
         else if (total >= 100) {
             console.log('M-m-m-monster kill!!');
